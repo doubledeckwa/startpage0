@@ -1,25 +1,22 @@
 `use strict`;
 
-// display time as hh:mm
+// display time as hh:mm:ss
 const options = {
-    timeZone : Intl.DateTimeFormat().resolvedOptions().timeZone, // Automatically get user's timezone
-    hour12 : false,
-    hour:  "2-digit",
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    hour12: false,
+    hour: "2-digit",
     minute: "2-digit",
-}
+    second: "2-digit"
+};
 
-const locale = navigator.languages != undefined ? navigator.languages[0] : navigator.language; // Get user's locale to format clock accordingly
+const locale = navigator.languages != undefined ? navigator.languages[0] : navigator.language;
 
-myTimer(); // Initialise clock otherwise you wait a second before it appears
+myTimer(); // Initialize clock
 
-var myVar = setInterval(function () {
-    myTimer();
-  }, 1000);
+const myVar = setInterval(myTimer, 1000);
 
 function myTimer() {
-    var today = new Date();
-
-    var time = today.toLocaleTimeString(locale, options);
-
+    const today = new Date();
+    const time = today.toLocaleTimeString(locale, options);
     document.getElementById("time").textContent = time;
 }
