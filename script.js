@@ -20,3 +20,19 @@ function myTimer() {
     const time = today.toLocaleTimeString(locale, options);
     document.getElementById("time").textContent = time;
 }
+
+// Search functionality
+document.getElementById('search-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        performSearch();
+    }
+});
+
+document.getElementById('search-button').addEventListener('click', performSearch);
+
+function performSearch() {
+    const query = document.getElementById('search-input').value.trim();
+    if (query) {
+        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    }
+}
